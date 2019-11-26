@@ -83,7 +83,7 @@ namespace SharpNav.Examples
 
 		private bool hasGenerated;
 		private bool displayLevel = true;
-		private DisplayMode displayMode;
+		private DisplayMode displayMode = DisplayMode.Pathfinding;
 
 		private KeyboardState prevK;
 		private MouseState prevM;
@@ -207,7 +207,7 @@ namespace SharpNav.Examples
 			else if (e.Key == Key.F4)
 			{
 				var dm = (int) displayMode;
-				dm = (dm + 1) % (int) (DisplayMode.MAX - 1);
+				dm = (dm + 1) % (int) (DisplayMode.MAX);
 				displayMode = (DisplayMode)dm;
 				Console.WriteLine($"Display Mode: {displayMode}");
 			}
@@ -472,6 +472,7 @@ namespace SharpNav.Examples
 			{
 				try
 				{
+					Console.WriteLine("Has generated, now pathfinding, and crowd");
 					GeneratePathfinding();
 
 					//Pathfinding with multiple units
@@ -495,6 +496,8 @@ namespace SharpNav.Examples
 		{
 			if (!hasGenerated)
 				return;
+
+			Console.WriteLine("Gen Pathfinding");
 
 			Random rand = new Random();
 			NavQueryFilter filter = new NavQueryFilter();

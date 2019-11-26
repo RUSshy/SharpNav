@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNav", "SharpNav\SharpN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNav.Tests", "SharpNav.Tests\SharpNav.Tests.csproj", "{446B22FE-5DED-4F16-B94C-1F660FBADB6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpNav.Sample.OpenTK", "SharpNav.Sample.OpenTK\SharpNav.Sample.OpenTK.csproj", "{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{446B22FE-5DED-4F16-B94C-1F660FBADB6F}.Release|x64.Build.0 = Release|Any CPU
 		{446B22FE-5DED-4F16-B94C-1F660FBADB6F}.Release|x86.ActiveCfg = Release|Any CPU
 		{446B22FE-5DED-4F16-B94C-1F660FBADB6F}.Release|x86.Build.0 = Release|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Debug|x64.Build.0 = Debug|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Debug|x86.Build.0 = Debug|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Release|x64.ActiveCfg = Release|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Release|x64.Build.0 = Release|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Release|x86.ActiveCfg = Release|Any CPU
+		{36FA45D2-FA70-417A-AB6C-B8CCF2B39530}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

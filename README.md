@@ -1,15 +1,17 @@
-![SharpNav](https://raw.githubusercontent.com/Robmaister/SharpNav/master/art/Logo/Full.png)
-[![Build Status](https://img.shields.io/travis/Robmaister/SharpNav.svg)](https://travis-ci.org/Robmaister/SharpNav) [![Build status](https://ci.appveyor.com/api/projects/status/fqegsrv5pdt5b7ng?svg=true)](https://ci.appveyor.com/project/Robmaister/sharpnav) [![NuGet Version](http://img.shields.io/nuget/vpre/SharpNav.svg)](https://www.nuget.org/packages/SharpNav) [![Gratipay Tips](https://img.shields.io/gratipay/Robmaister.svg)](https://gratipay.com/Robmaister)
-========
+![SharpNav](/art/Logo/Full.png)
+============================================================
+
+[![Build status](https://ci.appveyor.com/api/projects/status/2e97phdgm0nisojy?svg=true)](https://ci.appveyor.com/project/feliwir/sharpnav)
+[![MyGet Badge](https://buildstats.info/myget/feliwir/SharpNav)](https://www.myget.org/feed/feliwir/package/nuget/SharpNav)
 
 
-### What is it?
+## What is it?
 
 SharpNav is a library that generates and finds paths through navigation meshes. It is functionally equivalent to Mikko Monomen's wonderful [Recast Navigation](https://github.com/memononen/recastnavigation).
 
 SharpNav is proudly an [RCOS](http://rcos.rpi.edu/) project.
 
-### What are the benefits of SharpNav over alternatives?
+## What are the benefits of SharpNav over alternatives?
 
 There are several:
  - **It's portable!** SharpNav is written entirely in C#, so  that the same `SharpNav.dll` will run on all .NET or Mono supported platforms, **no recompilation necessary.**

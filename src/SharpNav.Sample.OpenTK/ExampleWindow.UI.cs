@@ -21,6 +21,7 @@ namespace SharpNav.Examples
 		{
 			settings = NavMeshGenerationSettings.Default;
 			areaSettings = new AreaIdGenerationSettings();
+			
 		}
 
 		private class AreaIdGenerationSettings

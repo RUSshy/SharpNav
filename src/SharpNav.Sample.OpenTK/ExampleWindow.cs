@@ -27,7 +27,7 @@ namespace SharpNav.Examples
 {
 	public partial class ExampleWindow : GameWindow
 	{
-		private enum DisplayMode
+		private enum DisplayMode : int
 		{
 			None,
 			Heightfield,
@@ -39,6 +39,7 @@ namespace SharpNav.Examples
 			PolyMeshDetail,
 			NavMesh,
 			Pathfinding,
+			MAX
 		}
 
 		private bool interceptExceptions;
@@ -81,7 +82,7 @@ namespace SharpNav.Examples
 		}
 
 		private bool hasGenerated;
-		private bool displayLevel;
+		private bool displayLevel = true;
 		private DisplayMode displayMode;
 
 		private KeyboardState prevK;
@@ -109,6 +110,9 @@ namespace SharpNav.Examples
 
 
 			gwenProjection = Matrix4.CreateOrthographicOffCenter(0, Width, Height, 0, -1, 1);
+			
+			
+			InitializeUI();
 		}
 
 		protected override void OnUpdateFrame(FrameEventArgs e)
@@ -141,19 +145,25 @@ namespace SharpNav.Examples
 				cam.Elevate(camSpeed);
 			if (k[Key.E])
 				cam.Elevate(-camSpeed);
-			if (k[Key.Z])
+			
+			if (k[Key.PageUp])
 			{
 				zoom += zoomSpeed;
 				if (zoom > MathF.PI / 2)
 					zoom = MathF.PI / 2;
+				
+				Console.WriteLine($"ZOOM: {zoom}");
 			}
-			if (k[Key.C])
+			if (k[Key.PageDown])
 			{
 				zoom -= zoomSpeed;
 				if (zoom < 0.002f)
 					zoom = 0.002f;
+
+				Console.WriteLine($"ZOOM: {zoom}");
 			}
 
+			
 			if (m[MouseButton.Right])
 			{
 				cam.RotatePitch((m.X - prevM.X) * (float)e.Time * 2f);
@@ -173,13 +183,34 @@ namespace SharpNav.Examples
 			prevM = m;
 		}
 
-		protected void OnKeyboardKeyDown(object sender, KeyboardKeyEventArgs e)
+
+		protected override void OnKeyPress(KeyPressEventArgs e)
 		{
 			if (!Focused)
 				return;
+			
+			
+		}
 
+		protected override void OnKeyDown(KeyboardKeyEventArgs e)
+		{
 			if (e.Key == Key.Escape)
 				Exit();
+			
+			
+			else if (e.Key == Key.F1)
+				GenerateNavMesh();
+			else if (e.Key == Key.F2)
+				GeneratePathfinding();
+			else if (e.Key == Key.F3)
+				GenerateCrowd();
+			else if (e.Key == Key.F4)
+			{
+				var dm = (int) displayMode;
+				dm = (dm + 1) % (int) (DisplayMode.MAX - 1);
+				displayMode = (DisplayMode)dm;
+				Console.WriteLine($"Display Mode: {displayMode}");
+			}
 			else if (e.Key == Key.F5)
 			{
 				//Gwen.Platform.Neutral.FileSave("Save NavMesh to file", ".", "All SharpNav Files(.snb, .snx, .snj)|*.snb;*.snx;*.snj|SharpNav Binary(.snb)|*.snb|SharpNav XML(.snx)|*.snx|SharpNav JSON(.snj)|*.snj", SaveNavMeshToFile);
@@ -193,41 +224,10 @@ namespace SharpNav.Examples
 			else if (e.Key == Key.F12)
 				WindowState = OpenTK.WindowState.Fullscreen;
 
+
 			base.OnKeyDown(e);
 		}
-
-		protected void OnKeyboardKeyUp(object sender, KeyboardKeyEventArgs e)
-		{
-			if (!Focused)
-				return;
-
-		}
-
-		protected void OnMouseButtonDown(object sender, MouseButtonEventArgs e)
-		{
-			if (!Focused)
-				return;
-
-		}
-
-		protected void OnMouseButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			if (!Focused)
-				return;
-
-		}
-
-		protected void OnMouseMove(object sender, MouseMoveEventArgs e)
-		{
-		}
-
-		protected void OnMouseWheel(object sender, MouseWheelEventArgs e)
-		{
-			if (!Focused)
-				return;
-
-		}
-
+		
 		protected override void OnRenderFrame(FrameEventArgs e)
 		{
 			base.OnRenderFrame(e);
@@ -649,7 +649,11 @@ namespace SharpNav.Examples
 		private void GenerateCrowd()
 		{
 			if (!hasGenerated || navMeshQuery == null)
+			{
 				return;
+			}
+
+			Console.WriteLine("Gen Crowd");
 
 			Random rand = new Random();
 			crowd = new Crowd(MAX_AGENTS, 0.6f, ref tiledNavMesh);

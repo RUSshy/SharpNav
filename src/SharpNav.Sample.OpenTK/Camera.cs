@@ -6,7 +6,6 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using SharpNav.Geometry;
 
-//Doesn't compile if in an unsupported configuration
 namespace SharpNav.Examples
 {
 	/// <summary>
